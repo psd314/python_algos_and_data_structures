@@ -72,9 +72,32 @@ class UnorderedList:
         return index
 
 
+    def pop(self, pos=None):
+        current = self.head
+        previous = None
 
+        if pos == None:
+            while current.get_next() != None:
+                previous = current
+                current = current.get_next()
 
+            if previous == None:
+                self.head = None
+            else:            
+                previous.set_next(None)
+            return current.get_data()
 
+        index = 0
+        while index < pos:
+            previous = current
+            current = current.get_next()
+            index += 1
 
-
+        if (index == 0) and (current.get_next() == None):
+            self.head = None
+        elif current.get_next() == None:
+            previous.set_next(None)
+        else:
+            previous.set_next(current.get_next())
+        return current.get_data()
 
