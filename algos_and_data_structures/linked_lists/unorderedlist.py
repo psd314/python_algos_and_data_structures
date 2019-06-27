@@ -101,3 +101,30 @@ class UnorderedList:
             previous.set_next(current.get_next())
         return current.get_data()
 
+    def insert(self, pos, item):
+        current = self.head
+        previous = None
+        node = Node(item)
+
+        if pos == 0:
+            self.head = node
+            node.set_next(current)
+        else:
+            index = 0
+            while index != pos:
+                previous = current
+                current = current.get_next()
+                index += 1
+
+            previous.set_next(node)
+            node.set_next(current)           
+# insert at 0
+# insert in middle
+# insert at end
+
+
+
+
+
+
+
